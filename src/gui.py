@@ -368,21 +368,25 @@ class Ui_MainWindow(object):
         
         
         # Encrypt message
-        c_text = ""
-        steps = ""
-        for letter in message:
-            alph, step = enigma.encrypt(letter)
-            c_text += alph
-            steps += step
+        # Check empty message
+        if (message != ""):
+            c_text = ""
+            steps = ""
+            for letter in message:
+                # Check space
+                if (letter != " "):
+                    alph, step, pos = enigma.encrypt(letter)
+                    c_text += alph
+                    steps += step + pos
 
-        # Display encrypted text
-        self.textBrowser.setText(steps + "Encrypted Text:" + c_text)
-        print("Encrypted Message:", c_text)
-        print("")
+            # Display encrypted text
+            self.textBrowser.setText(steps + "Encrypted Text: " + c_text)
+            print("Encrypted Message:", c_text)
+            print("")
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Enigma M3 Machine"))
         self.pushButton.setText(_translate("MainWindow", "Start"))
         self.label_2.setText(_translate("MainWindow", "Rotor 2:"))
         self.label_3.setText(_translate("MainWindow", "Rotor 3:"))

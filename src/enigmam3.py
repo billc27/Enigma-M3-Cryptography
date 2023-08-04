@@ -59,6 +59,8 @@ class EnigmaM3:
         number = self.plb.backward(number)
         steps += "Plugboard Encryption: " + alphabets[number] + "\n"
         alphabet = self.kyb.backward(number)
-        steps += "Output: " + alphabets[number] + "\n\n"
+        steps += "Output: " + alphabets[number] + "\n"
+        
+        position = "Rotors Position: " + self.rt1.left[0] + self.rt2.left[0] + self.rt3.left[0] + "\n\n"
 
-        return alphabet, steps
+        return alphabet, steps, position

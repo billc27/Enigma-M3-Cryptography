@@ -366,13 +366,17 @@ class Ui_MainWindow(object):
         message = self.lineEdit.text()
         print("Message:", message)
         
+        
         # Encrypt message
         c_text = ""
+        steps = ""
         for letter in message:
-            c_text += enigma.encrypt(letter)
-        
+            alph, step = enigma.encrypt(letter)
+            c_text += alph
+            steps += step
+
         # Display encrypted text
-        self.textBrowser.setText(c_text)
+        self.textBrowser.setText(steps + "Encrypted Text:" + c_text)
         print("Encrypted Message:", c_text)
         print("")
 

@@ -377,7 +377,7 @@ class Ui_MainWindow(object):
                 # Check space
                 if (letter != " "):
                     letter = letter.upper() # Capitalized the letter
-                    alph, step, pos = enigma.encrypt(letter)
+                    alph, step, pos = enigma.encrypt(letter, rotor_ring_settings)
                     c_text += alph
                     steps += step + pos
 

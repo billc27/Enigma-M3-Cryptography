@@ -20,7 +20,7 @@ class EnigmaM3:
         self.rt2.set_ring(rings[1])
         self.rt3.set_ring(rings[2])
     
-    def encrypt(self, alphabet):
+    def encrypt(self, alphabet, rings):
         # Rotating
         if (self.rt2.left[0] == self.rt2.turnover_notch and self.rt3.left[0] == self.rt3.turnover_notch):
             self.rt1.rotate()
@@ -61,6 +61,6 @@ class EnigmaM3:
         alphabet = self.kyb.backward(number)
         steps += "Output: " + alphabets[number] + "\n"
         
-        position = "Rotors Position: " + self.rt1.left[0] + self.rt2.left[0] + self.rt3.left[0] + "\n\n"
+        position = "Rotors Position: " + self.rt1.left[(rings[0]-1) % 26] + self.rt2.left[(rings[1]-1) % 26] + self.rt3.left[(rings[2]-1) % 26] + "\n\n"
 
         return alphabet, steps, position

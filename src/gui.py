@@ -236,7 +236,7 @@ class Ui_MainWindow(object):
         # Plugboard Input Box
         self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
         self.textEdit.setObjectName("textEdit")
-        plugboard = self.textEdit.toPlainText()
+        self.textEdit.setPlaceholderText("Enter your plugboard configurations with the format: AB,DF,ER,etc\n(Do not use space after the comma!)")
         self.left_vlayout.addWidget(self.textEdit)
 
         # Start Button
@@ -273,6 +273,7 @@ class Ui_MainWindow(object):
         # Input Box
         self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit.setPlaceholderText("Enter your text here")
         self.right_vlayout.addWidget(self.lineEdit)
 
         # Result Box Label
@@ -375,6 +376,7 @@ class Ui_MainWindow(object):
             for letter in message:
                 # Check space
                 if (letter != " "):
+                    letter = letter.upper() # Capitalized the letter
                     alph, step, pos = enigma.encrypt(letter)
                     c_text += alph
                     steps += step + pos
